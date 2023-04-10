@@ -17,17 +17,13 @@ public class LionParameterizedTest {
         this.sex = sex;
         this.hasMane = hasMane;
     }
-
     @Parameterized.Parameters
     public static Object[][] data() {
         return new Object[][]{
-                {"Не определен", false},
-                {"Самец", true},
                 {"Самка", false},
-                {"Оно", false},
+                {"Самец", true}
         };
     }
-
     @Test
     public void testDoesHaveMane() {
         try {

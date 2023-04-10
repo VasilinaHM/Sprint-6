@@ -1,50 +1,33 @@
 
-import java.util.List;
 import com.example.Feline;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
+import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 
 public class FelineTest {
-    @Mock
-    private Feline MockKitten;
-
-    Feline Kitten = new Feline();
-
-
+    Feline kitten = new Feline();
     @Test
     public void testEatMeat() throws Exception {
-             List<String> expected = List.of("Животные", "Птицы", "Рыба");
-             Mockito.when(MockKitten.eatMeat()).thenReturn(expected);
-             Assert.assertEquals(MockKitten.eatMeat(), Kitten.eatMeat());
+        List<String> expected = List.of("Животные", "Птицы", "Рыба");
+        Assert.assertEquals(expected, kitten.eatMeat());
     }
-
-
-
     @Test
     public void testGetFamily() {
-        Mockito.when(MockKitten.getFamily()).thenReturn("Кошачьи");
-        Assert.assertEquals(Kitten.getFamily(), MockKitten.getFamily());
-
+        Assert.assertEquals(kitten.getFamily(), "Кошачьи");
     }
 
     @Test
     public void testGetKittens() {
-
-        Mockito.when(MockKitten.getKittens()).thenReturn(1);
-        Assert.assertEquals(Kitten.getKittens(), MockKitten.getKittens());
+        Assert.assertEquals(kitten.getKittens(), 1);
     }
 
     @Test
-    public void testGetKittensWhithParam() {
-
-        Mockito.when(MockKitten.getKittens(1)).thenReturn(1);
-        Assert.assertEquals(Kitten.getKittens(1), MockKitten.getKittens(1));
+    public void testGetKittensWithParam() {
+        Assert.assertEquals(kitten.getKittens(1), 1);
     }
 
 }
