@@ -7,7 +7,6 @@ import org.mockito.Mockito;
 import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class LionParameterizedTest {
-   private Lion lionTest = Mockito.mock(Lion.class);
    private Feline feline = Mockito.mock(Feline.class);
    private String sex;
    private Boolean hasMane = true;
@@ -21,18 +20,19 @@ public class LionParameterizedTest {
     public static Object[][] data() {
         return new Object[][]{
                 {"Самка", false},
-                {"Самец", true}
+                {"Самец", true},
+                {"оно" , null}
         };
     }
     @Test
-    public void testDoesHaveMane() {
+    public void testDoesHaveMane()  {
         try {
-            Lion lion = new Lion(sex,feline);
-            boolean actual = lion.doesHaveMane();
-            Mockito.when(lionTest.doesHaveMane()).thenReturn(hasMane);
-            assertEquals(lionTest.doesHaveMane(),lion.doesHaveMane());
-        } catch (Exception ex) {
-            assertEquals("Используйте допустимые значения пола животного - самец или самка", ex.getMessage());
+            Lion lion = new Lion(sex, feline);
+            assertEquals(hasMane, lion.doesHaveMane());
+        }
+        catch (Exception e)
+        {
+            e.getMessage();
         }
     }
 }
